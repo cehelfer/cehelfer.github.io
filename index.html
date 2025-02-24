@@ -11,10 +11,10 @@
 
 .profile-pic {
     position: absolute;
-    top: 220px; /* Adjusts top spacing */
-    right: 50px; /* Adjusts right spacing */
-    width: 150px; /* Adjusts the size of the photo */
-    height: 150px; /* Keeps the aspect ratio */
+    top: 20px; /* Adjusts top spacing */
+    right: 20px; /* Adjusts right spacing */
+    width: 100px; /* Adjusts the size of the photo */
+    height: 100px; /* Keeps the aspect ratio */
     border-radius: 50%; /* Makes the image circular */
     border: 3px solid white; /* Optional: adds a white border around the image */
     box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* Optional: adds shadow for better visibility */
@@ -92,34 +92,21 @@
 }
 
 /* Media Queries */
-
-/* Smaller than 768px (Tablets and large phones) */
 @media (max-width: 767px) {
-    .section {
-        padding: 10px;
-        height: auto;
-        min-height: 100vh; /* Ensures that sections are at least the height of the viewport */
-        box-sizing: border-box; /* Includes padding in height calculation */
-        flex-direction: column;
-    }
-
-    body {
-        font-size: 14px; /* Slightly smaller font size for smaller screens */
+    .profile-pic {
+        top: 10px; /* Less spacing from top for smaller screens */
+        right: 10px; /* Less spacing from right for smaller screens */
+        width: 80px; /* Smaller size for smaller screens */
+        height: 80px; /* Maintains the aspect ratio */
     }
 }
 
-/* Smaller than 480px (Small devices and phones) */
-@media (max-width: 479px) {
-    .section {
-        padding: 5px;
-    }
-
-    body {
-        font-size: 12px; /* Even smaller font size for very small screens */
-    }
-
-    .container {
-        padding: 10px; /* More padding for smaller devices for easier reading */
+@media (max-width: 480px) {
+    .profile-pic {
+        width: 60px; /* Even smaller size for very small screens */
+        height: 60px; /* Maintains the aspect ratio */
+        top: 5px; /* Minimal top spacing */
+        right: 5px; /* Minimal right spacing */
     }
 }
 
