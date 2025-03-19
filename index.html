@@ -1,256 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Helfer - Project Manager</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            color: black;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Helfer - Project Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+      overflow-x: hidden;
+    }
 
-        h1 {
-            font-size: 3em;
-            font-weight: bold;
-        }
+    h1 {
+      font-size: 3em;
+      font-weight: bold;
+    }
 
-        .sections-wrapper {
-            position: relative;
-            width: 100%;
-        }
+    .sections-wrapper {
+      position: relative;
+      width: 100%;
+    }
 
-        .section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: opacity 1s, transform 1s;
-            scroll-snap-align: start;
-        }
+    .section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: opacity 1s, transform 1s;
+      scroll-snap-align: start;
+    }
 
-        .container {
-            max-width: 800px;
-            padding: 20px;
-            margin: 0 auto;
-        }
+    .container {
+      max-width: 800px;
+      padding: 20px;
+      margin: 0 auto;
+    }
 
-        .left-column, .right-column {
-            flex: 1;
-        }
+    .left-column, .right-column {
+      flex: 1;
+    }
 
-        .left-column {
-            padding-right: 20px;
-            text-align: left;
-        }
+    .left-column {
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding-right: 20px;
+      text-align: left;
+    }
 
-        .right-column {
-            width: 300px;
-            height: 500px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            margin-left: 20px;
-        }
+    /* Center the heading in the left column */
+    .left-column h3 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
 
-        .right-column img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    /* Improved Key Achievements List */
+    
 
-        .profile-pic {
-            position: absolute;
-            top: 60px;
-            right: 40px;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
+    .left-column li {
+      padding: 10px;
+      margin-bottom: 8px;
+      line-height: 1.6;
+      transition: background-color 0.3s ease;
+    }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .left-column li:hover {
+      background-color: #e0f7fa; /* Subtle highlight on hover */
+    }
 
-        a {
-            color: black;
-            text-decoration: none;
-        }
+    .right-column {
+      width: 300px;
+      height: 500px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-left: 20px;
+      flex: 0 0 300px;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    /* Make the right column bigger on larger screens */
+    @media (min-width: 1200px) {
+      .right-column {
+        width: 400px;  /* Increase default width for better proportions */
+        flex: 0 0 400px;
+      }
+    }
 
-        .contact-link {
-            display: inline-block;
-            margin: 10px;
-            background: rgba(113, 107, 107, 0.168);
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+    /* Skill Card Styles with Background Blend Mode */
+    .skill-card {
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+      background-blend-mode: multiply;       /* Blend overlay with image */
+      color: #fff;
+      position: relative;
+      min-height: 200px;
+      margin-bottom: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
 
-        .contact-link:hover {
-            background-color: rgba(139, 127, 127, 0.8);
-            transform: scale(1.15);
-        }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-        .contact-icon {
-            width: 24px;
-            height: 24px;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
-   
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-link {
+      display: inline-block;
+      margin: 10px;
+      background: rgba(113, 107, 107, 0.168);
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .contact-link:hover {
+      background-color: rgba(139, 127, 127, 0.8);
+      transform: scale(1.15);
+    }
+
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    /* Interactive Divider */
     .interactive-divider {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px; /* Maintain a fixed height */
-        margin: 50px 0;
-        position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px auto; /* margin-top lowered for closeness to Section 1 */
+    }
+
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      margin-bottom: 20px; /* space between pic & logos */
+    }
+
+    .logos-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
 
     .interactive-logo {
-        width: 100px; /* Set initial size of logos */
-        transition: transform 0.3s ease-in-out; /* Smooth transformation for scaling */
-        cursor: pointer;
-        position: relative; /* Updated from absolute to relative for better centering */
+      width: 80px;
+      height: 80px;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
     }
 
     .interactive-logo:hover {
-        transform: scale(1.2); /* Enlarge logo size by 20% on hover */
+      transform: scale(1.2);
     }
 
-    /* Aligning logos with equal spacing and central alignment */
-    .interactive-divider {
-        flex-wrap: nowrap; /* Prevent wrapping to keep logos in a single line */
-        padding: 0 20%; /* Apply padding to ensure central alignment within the container */
+    /* Remove the image that used to separate Section 2 & 3 */
+    .section-divider {
+      display: none;
     }
 
+    .section#section3 {
+      background: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/background.jpg?raw=true') no-repeat center center;
+      background-size: cover;
+      color: #fff;
+    }
 
-        @media (max-width: 1024px) {
-            .profile-pic {
-                width: 200px;
-                height: 200px;
-                top: 20px;
-                right: 20px;
-            }
+    /* Desktop Section 2 Layout (Flex) */
+    #section2 .container {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      margin-top: 150px; /* Larger top margin to avoid overlap with divider */
+    }
 
-            h1 {
-                font-size: 2.5em;
-            }
-        }
+    @media (max-width: 1024px) {
+      h1 {
+        font-size: 2.5em;
+      }
+    }
 
-        @media (max-width: 768px) {
-            .section {
-                height: auto;
-                padding: 20px 0;
-            }
+    @media (max-width: 768px) {
+      .section {
+        height: auto;
+        padding: 20px 0;
+      }
+      h1, h2 {
+        font-size: 2em;
+      }
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+      .interactive-logo {
+        width: 60px;
+        height: 60px;
+      }
+      /* Stack Section 2 columns on smaller screens */
+      #section2 .container {
+        display: block;
+        margin-top: 20px; /* smaller margin on mobile */
+      }
+      .left-column, .right-column {
+        width: 100%;
+        margin: 10px 0;
+      }
+      .right-column {
+        margin-left: 0;
+      }
+    }
 
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-                top: 10px;
-                right: 10px;
-            }
-
-            h1, h2 {
-                font-size: 2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.4em;
-            }
-
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-                top: 5px;
-                right: 5px;
-            }
-
-            .contact-icon {
-                width: 20px;
-                height: 20px;
-            }
-        }
-
-        .section-divider {
-            width: 100%; /* Full width */
-            display: block;
-        }
-
-        .section#section3 {
-            background: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/background.jpg?raw=true') no-repeat center center;
-            background-size: cover;
-            color: #fff;
-        }
-    </style>
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.4em;
+      }
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+      }
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .interactive-logo {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="sections-wrapper">
-        <div class="section" id="section1">
-            <div class="container">
-                <h1>Carlos Helfer</h1>
-                <h2>Project Manager | Engineering & Product Development</h2>
-                <p>Experienced Project Manager with expertise in Agile methodologies, product lifecycle management, and continuous improvement.</p>
-                <img src="https://github.com/cehelfer/resume/blob/main/Untitled%20(2).png?raw=true" alt="Carlos Helfer" class="profile-pic">
-            </div>
-        </div>
-        <div class="interactive-divider">
-            <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/Boston-University-Logo.png?raw=true" alt="Boston University Logo" class="interactive-logo">
-            <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/blob%20(1).png?raw=true" alt="Blob 1" class="interactive-logo">
-            <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/PMI1.png?raw=true" alt="PMI" class="interactive-logo">
-            <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/cert_mark_SAFe_Certified_small_150px%20(1).webp?raw=true" alt="SAFe Certified" class="interactive-logo">
-        </div>
-        <div class="section" id="section2">
-            <div class="container" style="display: flex;">
-                <div class="left-column">
-                    <h3>Key Achievements</h3>
-                    <ul>
-                        <li><strong>United Airlines Digital Marketing & Monetization Strategy (Current):</strong> Leading the development and integration of targeted advertising for personalized passenger experiences.</li>
-                        <li><strong>United Airlines Starlink Connectivity Integration (Current):</strong> Coordinating the seamless compatibility of Starlink’s high-speed internet services with Panasonic’s IFE system.</li>
-                        <li><strong>United Airlines Single Aisle Retrofit (2023):</strong> Managed IFE integration for Airbus A319/320 and Boeing 737 fleet, ensuring seamless installation and upgrades.</li>
-                        <li><strong>United Airlines Bluetooth Implementation Project (2021):</strong> Spearheaded the transition from 3.5mm jacks to wireless audio on Boeing 737 Max 8.</li>
-                        <li><strong>Panasonic Avionics' Satellite Communications Integration (2018):</strong> Led the deployment of a new satellite modem, increasing bandwidth 20x for in-flight connectivity.</li>
-                        <li><strong>Emirates Boeing 777-300ER Project (2017):</strong> Implemented groundbreaking IFEC innovations, including the 'ice platform' and inflight GCS connectivity.</li>
-                    </ul>
-                </div>
-                <div class="right-column">
-                    <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/Panasonic-WB_0206_compAppInFlight2-620x404.jpg?raw=true">
-                    <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/Emirates-Thales.jpg?raw=true">
-                    <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/UA-%E3%83%8F%E3%82%99%E3%83%8A%E3%83%BC800X600-%E3%82%AB%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%99%E3%83%BC.png?raw=true">
-                    <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/panasonic-emirates.jpg.optimal.jpg?raw=true">
-                    <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/United_Airlines_Next_Bluetooth_IFE1.jpg?raw=true">
-                    <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/United_Airlines_Next_Bluetooth_IFE2.jpg?raw=true">
-                </div>
-            </div>
-        </div>
-        <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/358f00ca-516d-4694-aaad-936b262ef628.jpg?raw=true" alt="Section Divider" class="section-divider">
-        <div class="section" id="section3">
-            <div class="container">
-                <a href="mailto:cehelfer@live.com" title="Email Carlos Helfer" class="contact-link">
-                    <img src="https://github.com/cehelfer/resume/blob/main/email.png?raw=true" alt="Email Icon" class="contact-icon"> cehelfer@live.com
-                </a>
-                <a href="https://www.linkedin.com/in/carloshelfer" target="_blank" title="LinkedIn" class="contact-link">
-                    <img src="https://github.com/cehelfer/resume/blob/main/linkedin.png?raw=true" alt="LinkedIn Icon" class="contact-icon"> linkedin.com/in/carloshelfer
-                </a>
-                <a href="https://github.com/cehelfer/resume/blob/main/CarlosHelfer_Resume.pdf?raw=true" title="Download My Resume" target="_blank" class="contact-link">
-                    <img src="https://github.com/cehelfer/resume/blob/main/download.png?raw=true" alt="Download Icon" class="contact-icon"> Download My Resume
-                </a>
-            </div>
-        </div>
+  <div class="sections-wrapper">
+
+    <!-- SECTION 1 -->
+    <div class="section" id="section1">
+      <div class="container">
+        <h1>Carlos Helfer</h1>
+        <h2>Project Manager | Engineering & Product Development</h2>
+        <p>Experienced Project Manager with expertise in Agile methodologies, product lifecycle management, and continuous improvement.</p>
+      </div>
     </div>
+
+    <!-- INTERACTIVE DIVIDER -->
+    <div class="interactive-divider">
+      <img src="https://github.com/cehelfer/resume/blob/main/Untitled%20(2).png?raw=true"
+           alt="Carlos Helfer" class="profile-pic">
+
+      <div class="logos-row">
+        <!-- Replaced Boston University Logo, added AWS -->
+        <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/Boston%20University%20Alumni%20Association%20_%20Boston%20MA.jpeg?raw=true"
+             alt="Boston University Alumni" class="interactive-logo">
+        <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/blob%20(1).png?raw=true"
+             alt="Blob 1" class="interactive-logo">
+        <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/PMI1.png?raw=true"
+             alt="PMI" class="interactive-logo">
+        <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/cert_mark_SAFe_Certified_small_150px%20(1).webp?raw=true"
+             alt="SAFe Certified" class="interactive-logo">
+        <img src="https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/interactive/AWS-Certified-Cloud-Practitioner.png?raw=true"
+             alt="AWS Certified Cloud Practitioner" class="interactive-logo">
+      </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section" id="section2">
+      <div class="container">
+        <div class="left-column">
+          <h3>Key Achievements</h3>
+          <ul>
+            <li><strong>United Airlines Digital Marketing & Monetization Strategy (Current):</strong> Leading the development and integration of targeted advertising for personalized passenger experiences.</li>
+            <li><strong>United Airlines Starlink Connectivity Integration (Current):</strong> Coordinating the seamless compatibility of Starlink’s high-speed internet services with Panasonic’s IFE system.</li>
+            <li><strong>United Airlines Single Aisle Retrofit (2023):</strong> Managed IFE integration for Airbus A319/320 and Boeing 737 fleet, ensuring seamless installation and upgrades.</li>
+            <li><strong>United Airlines Bluetooth Implementation Project (2021):</strong> Spearheaded the transition from 3.5mm jacks to wireless audio on Boeing 737 Max 8.</li>
+            <li><strong>Panasonic Avionics' Satellite Communications Integration (2018):</strong> Led the deployment of a new satellite modem, increasing bandwidth 20x for in-flight connectivity.</li>
+            <li><strong>Emirates Boeing 777-300ER Project (2017):</strong> Implemented groundbreaking IFEC innovations, including the 'ice platform' and inflight GCS connectivity.</li>
+          </ul>
+        </div>
+        <div class="right-column">
+          <h3>Skills</h3>
+          <div class="skill-card"
+               style="background-image: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/Panasonic-WB_0206_compAppInFlight2-620x404.jpg?raw=true');">
+            <h4>Aviation Product Lifecycle Expertise</h4>
+            <p>Comprehensive understanding from design to maintenance and support.</p>
+            <h4>Aerospace & IFEC Experience</h4>
+            <p>Immersed in Aerospace and In-Flight Entertainment & Connectivity sectors.</p>
+          </div>
+          <div class="skill-card"
+               style="background-image: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/Emirates-Thales.jpg?raw=true');">
+            <h4>Aviation Standards</h4>
+            <p>Familiar with DO-160, DO-178, FAA/EASA Certification Standards, ASO9100, ISO9001.</p>
+            <h4>Technical Acumen</h4>
+            <p>Skilled in connectivity, avionics, and commercial aircraft setups.</p>
+          </div>
+          <div class="skill-card"
+               style="background-image: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/panasonic-emirates.jpg.optimal.jpg?raw=true');">
+            <h4>Stakeholder Engagement</h4>
+            <p>Proficient in uniting diverse stakeholder viewpoints to reach consensus.</p>
+            <h4>Time Management & Discipline</h4>
+            <p>Consistently manage tasks within tight deadlines.</p>
+          </div>
+          <div class="skill-card"
+               style="background-image: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/United_Airlines_Next_Bluetooth_IFE1.jpg?raw=true');">
+            <h4>Communication</h4>
+            <p>Exceptional presentation and interpersonal skills across organizational levels.</p>
+            <h4>Regulatory Awareness</h4>
+            <p>Basic familiarity with FAA/EASA STC processes.</p>
+          </div>
+          <div class="skill-card"
+               style="background-image: url('https://github.com/cehelfer/cehelfer.github.io/blob/main/Images/United_Airlines_Next_Bluetooth_IFE2.jpg?raw=true');">
+            <h4>Linefit & Retrofit Insight</h4>
+            <p>Hands-on experience with aviation industry programs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section" id="section3">
+      <div class="container">
+        <a href="mailto:cehelfer@live.com" title="Email Carlos Helfer" class="contact-link">
+          <img src="https://github.com/cehelfer/resume/blob/main/email.png?raw=true" alt="Email Icon" class="contact-icon">
+          cehelfer@live.com
+        </a>
+        <a href="https://www.linkedin.com/in/carloshelfer" target="_blank" title="LinkedIn" class="contact-link">
+          <img src="https://github.com/cehelfer/resume/blob/main/linkedin.png?raw=true" alt="LinkedIn Icon" class="contact-icon">
+          linkedin.com/in/carloshelfer
+        </a>
+        <a href="https://github.com/cehelfer/resume/blob/main/CarlosHelfer_Resume.pdf?raw=true" title="Download My Resume" target="_blank" class="contact-link">
+          <img src="https://github.com/cehelfer/resume/blob/main/download.png?raw=true" alt="Download Icon" class="contact-icon">
+          Download My Resume
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
